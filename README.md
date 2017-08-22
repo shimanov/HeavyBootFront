@@ -1,2 +1,2 @@
 # HeavyBootFront
-Front end part for HeavyBoot API
+Frontend part for HeavyBoot API
