@@ -1,0 +1,39 @@
+<div class="container">
+    <h4 [class.hidden]="inEditMode" class="teal-text text-lighten-2">Add</h4>
+    <h4 [class.hidden]="!inEditMode" class="teal-text text-lighten-2">Edit</h4>
+    <div class="row">
+        <div class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input type="text" id="text" [(ngModel)]="currentHb.text">
+                    <label [ngClass]="currentHb.text ? 'active' : ''" for="text">Input text</label>
+                </div>
+                <div class="input-field col s12">
+                    <a href="#!" class="waves-effect waves-light btn" (click)="save()">{{buttonLabel}}</a>
+                    <a href="#!" [class.hidden]="!inEditMode" class="waves-effect waves-light btn red" (click)="cancel()">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div [class.hidden]="inEditMode" class="row" *ngFor="let hb of hbs">
+        <div class="col s1">
+            <input type="checkbox" id="chk_{{hb.id}}" [checked]="hb.isCompleted" 
+                (click)="setOrUnsetCompleted(hb)" />
+            <label [attr.for]="'chk_'+ hb.id" id="lbl_{{hb.id}}" materialize="tooltip" class="tooltipped" data-tooltip="Set/Unset completed"></label>
+        </div>
+        <div class="col s9">
+            {{hb.text}}
+        </div>
+        <div class="col s1">
+            <a href="#!" (click)="remove(hb.id)" materialize="tooltip" class="tooltipped" data-tooltip="Remove">
+                <i class="material-icons red-text text-red-2">delete</i>
+            </a>
+        </div>
+        <div class="col s1">
+             <a href="#!" (click)="edit(hbs)" materialize="tooltip" class="tooltipped" data-tooltip="Edit">
+                <i class="material-icons teal-text text-lighten-2">mode_edit</i>
+            </a>
+        </div>
+    </div>
+</div>
