@@ -12,3 +12,7 @@ before_script:
     
 script:
     - ng build --prod
+
+os:
+  - linux
+  - osx
